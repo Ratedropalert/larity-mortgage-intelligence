@@ -36,7 +36,7 @@ export default function SigninPage() {
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-center bg-brand-bg px-6 py-40 relative overflow-hidden">
+        <div className="flex min-h-screen items-center justify-center bg-brand-bg px-6 py-32 relative overflow-hidden">
             {/* Subtle background element */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/[0.03] blur-[120px] rounded-full pointer-events-none" />
 
@@ -59,7 +59,7 @@ export default function SigninPage() {
                         <div className="space-y-2">
                             <label>Terminal ID (Email)</label>
                             <div className="relative group">
-                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-brand-muted group-focus-within:text-brand-accent transition-colors" />
+                                <Mail className={`absolute left-4 top-1/2 -translate-y-1/2 size-4 transition-all ${email ? 'opacity-0' : 'opacity-100 text-brand-muted group-focus-within:text-brand-accent'}`} />
                                 <input
                                     type="email"
                                     required
@@ -77,7 +77,7 @@ export default function SigninPage() {
                                 <Link href="#" className="text-[12px] font-bold text-brand-accent hover:underline">Forgot key?</Link>
                             </div>
                             <div className="relative group">
-                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-brand-muted group-focus-within:text-brand-accent transition-colors" />
+                                <Lock className={`absolute left-4 top-1/2 -translate-y-1/2 size-4 transition-all ${password ? 'opacity-0' : 'opacity-100 text-brand-muted group-focus-within:text-brand-accent'}`} />
                                 <input
                                     type="password"
                                     required

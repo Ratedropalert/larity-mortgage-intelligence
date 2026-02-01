@@ -61,7 +61,7 @@ export default function SignupPage() {
 
     if (isSubmitted) {
         return (
-            <div className="min-h-screen pt-40 pb-20 bg-brand-bg flex items-center justify-center">
+            <div className="min-h-screen pt-32 pb-24 bg-brand-bg flex items-center justify-center">
                 <div className="container-custom max-w-xl text-center">
                     <FadeIn direction="up">
                         <div className="size-20 bg-teal-50 rounded-2xl flex items-center justify-center mx-auto mb-10 border border-teal-100">
@@ -96,12 +96,12 @@ export default function SignupPage() {
     }
 
     return (
-        <div className="min-h-screen pt-40 pb-20 bg-brand-bg lg:pt-40">
+        <div className="min-h-screen pt-32 pb-24 bg-brand-bg">
             <div className="container-custom">
-                <div className="grid lg:grid-cols-2 gap-24 items-start">
+                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
                     {/* Left Side: Reassurance */}
-                    <div className="space-y-12">
+                    <div className="space-y-16">
                         <Link href="/" className="inline-flex items-center gap-2 text-[14px] font-semibold text-brand-accent group">
                             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                             Back to overview
@@ -114,7 +114,7 @@ export default function SignupPage() {
                             </p>
                         </div>
 
-                        <div className="space-y-10 pt-4">
+                        <div className="space-y-10">
                             <h4 className="text-[13px] font-bold text-brand-text uppercase tracking-widest">What you'll get:</h4>
                             <ul className="space-y-8">
                                 {[
@@ -143,7 +143,7 @@ export default function SignupPage() {
 
                                 {/* Target Rate Selector */}
                                 <div className="space-y-8 pb-8 border-b border-gray-50">
-                                    <div className="flex justify-between items-end">
+                                    <div className="flex justify-between items-end gap-4">
                                         <div className="space-y-1">
                                             <label className="mb-0">Target Yield (%)</label>
                                             <p className="text-[12px] text-brand-muted font-medium flex items-center gap-1.5">
@@ -170,7 +170,7 @@ export default function SignupPage() {
                                     </div>
 
                                     <p className="text-[13px] text-brand-muted italic leading-relaxed">
-                                        “We’ll notify you when average rates hit this level or lower.”
+                                        "We'll notify you when average rates hit this level or lower."
                                     </p>
                                 </div>
 
