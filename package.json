@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "postbuild": "git add . && git commit -m \"build: automatic push after build\" && git push origin main"
+    "postbuild": "if [ \"$CI\" != \"true\" ]; then git add . && git commit -m \"build: automatic push after build\" && git push origin main; else echo 'Skipping auto-push in CI environment'; fi"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
