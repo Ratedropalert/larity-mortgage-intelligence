@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postbuild": "git add . && git commit -m \"build: automatic push after build\" && git push origin main"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

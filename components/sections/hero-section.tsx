@@ -3,12 +3,38 @@
 import Link from "next/link";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { FadeIn } from "@/components/motion/fade-in";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
 
 export function HeroSection() {
+    const cardContainerRef = useRef<HTMLDivElement>(null);
+
     const scrollToStory = () => {
         const story = document.getElementById("scroll-story");
         story?.scrollIntoView({ behavior: "smooth" });
     };
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!cardContainerRef.current) return;
+            const { clientX, clientY } = e;
+            const { left, top, width, height } = cardContainerRef.current.getBoundingClientRect();
+
+            const x = (clientX - left) / width - 0.5;
+            const y = (clientY - top) / height - 0.5;
+
+            gsap.to(cardContainerRef.current, {
+                rotationY: x * 15,
+                rotationX: -y * 15,
+                transformPerspective: 1000,
+                duration: 0.6,
+                ease: "power2.out"
+            });
+        };
+
+        window.addEventListener("mousemove", handleMouseMove);
+        return () => window.removeEventListener("mousemove", handleMouseMove);
+    }, []);
 
     return (
         <section
@@ -52,11 +78,9 @@ export function HeroSection() {
                                 <div className="flex -space-x-4">
                                     {[1, 2, 3].map((i) => (
                                         <div key={i} className="size-12 rounded-full border-[3px] border-brand-bg bg-gray-100 overflow-hidden relative z-10 shadow-sm">
-                                            <img
-                                                src={`/avatar-${i}.png`}
-                                                alt={`Client Member ${i}`}
-                                                className="w-full h-full object-cover"
-                                            />
+                                            <div className="w-full h-full bg-brand-accent/10 flex items-center justify-center text-[10px] font-bold text-brand-accent">
+                                                U{i}
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
@@ -76,7 +100,10 @@ export function HeroSection() {
                             {/* Subtle background glow */}
                             <div className="absolute -inset-20 bg-brand-accent/5 blur-[100px] rounded-full pointer-events-none -z-10" />
 
-                            <div className="relative bg-white border border-brand-border p-6 md:p-12 shadow-[0_32px_120px_rgba(0,0,0,0.04)] rounded-[24px] overflow-hidden max-w-[500px] md:max-w-xl mx-auto lg:max-w-none w-full">
+                            <div
+                                ref={cardContainerRef}
+                                className="relative bg-white border border-brand-border p-6 md:p-12 shadow-[0_32px_120px_rgba(0,0,0,0.04)] rounded-[24px] overflow-hidden max-w-[500px] md:max-w-xl mx-auto lg:max-w-none w-full preserve-3d"
+                            >
                                 <div className="space-y-8">
                                     <div className="flex justify-between items-start">
                                         <div className="space-y-1">
@@ -112,6 +139,9 @@ export function HeroSection() {
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* Floating 3D elements inside card */}
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-accent/5 blur-3xl -z-10" />
                             </div>
                         </div>
                     </FadeIn>

@@ -256,3 +256,22 @@ input[type="range"]::-webkit-slider-thumb {
   border: 2px solid white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* 🌀 Storytelling 3D Utilities */
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@keyframes scroll-line {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+.animate-scroll-line {
+  animation: scroll-line 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
