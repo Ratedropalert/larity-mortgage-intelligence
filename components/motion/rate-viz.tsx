@@ -56,13 +56,11 @@ function RateCard({ rate, payment, color }: RateVizProps) {
                         <Text
                             position={[0, 1.8, 0]}
                             fontSize={0.12}
-                            color="#ffffff"
                             anchorX="center"
                             anchorY="middle"
                             letterSpacing={0.4}
-                            opacity={0.2}
-                            transparent
                         >
+                            <meshBasicMaterial color="#ffffff" opacity={0.2} transparent />
                             NODE_SYSTEM_SURVEILLANCE
                         </Text>
 
@@ -81,13 +79,11 @@ function RateCard({ rate, payment, color }: RateVizProps) {
                         <Text
                             position={[0, -0.3, 0]}
                             fontSize={0.1}
-                            color="#3b82f6"
                             anchorX="center"
                             anchorY="middle"
                             letterSpacing={0.3}
-                            opacity={0.6}
-                            transparent
                         >
+                            <meshBasicMaterial color="#3b82f6" opacity={0.6} transparent />
                             LIVE_YIELD_DELTA
                         </Text>
 
@@ -111,13 +107,11 @@ function RateCard({ rate, payment, color }: RateVizProps) {
                         <Text
                             position={[0, -2.5, 0]}
                             fontSize={0.09}
-                            color="#ffffff"
                             anchorX="center"
                             anchorY="middle"
-                            opacity={0.15}
-                            transparent
                             letterSpacing={0.2}
                         >
+                            <meshBasicMaterial color="#ffffff" opacity={0.15} transparent />
                             MONTHLY_EFFICIENCY_TARGET
                         </Text>
                     </group>

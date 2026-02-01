@@ -1,14 +1,15 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+// Hardcoded Supabase credentials for easy deployment
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://zxkynlqqllvamxxxqylx.supabase.co';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4a3lubHFxbGx2YW14eHhxeWx4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4OTQ5MjQsImV4cCI6MjA4NTQ3MDkyNH0.aPEP1gt2WhhTlFbxBU5315lFiS3CIj18t7XrJOgfDjo';
 
 const createSupabaseClient = () => {
     if (supabaseUrl && supabaseAnonKey) {
         return createClient(supabaseUrl, supabaseAnonKey);
     }
-    // Return a mock client or throw a controlled error that doesn't crash the module import
-    console.error("Supabase credentials missing! Check .env.local");
+    // Fallback - should never reach here with hardcoded values
+    console.error("Supabase credentials missing!");
     return {
         auth: {
             signUp: () => Promise.resolve({ data: null, error: { message: "Supabase not configured" } }),
